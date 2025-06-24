@@ -9,7 +9,7 @@ const Layout = ({ children }: Readonly<{children: React.ReactNode}> ) => {
         <Button className="fixed top-5 left-5" variant={ 'outline' } asChild>
             <Link href='/'>
                 <Icons.arrowLeft className='h-2 w-2'/>
-                <p>Go back</p>
+                <p>Home</p>
             </Link>
         </Button>
         { children }

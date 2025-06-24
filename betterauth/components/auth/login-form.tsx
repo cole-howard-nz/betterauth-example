@@ -85,15 +85,24 @@ const LoginForm = () => {
           </div>
         </div>
 
-        <p className="text-accent-foreground text-center text-sm">
-          Don't have an account?
+        <div className='flex flex-col'>
+          <p className="text-accent-foreground text-center text-sm">
+            Don't have an account?
+            <Button
+              asChild
+              variant="link"
+              className="px-2">
+                <Link href="/sign-up">Create account</Link>
+            </Button>
+          </p>
+
           <Button
             asChild
             variant="link"
-            className="px-2">
-              <Link href="/sign-up">Create account</Link>
+            className="text-sm">
+              <Link href="/login/forgot-account">Forgot your account?</Link>
           </Button>
-        </p>
+        </div>
       </form>
     </section>
   )
