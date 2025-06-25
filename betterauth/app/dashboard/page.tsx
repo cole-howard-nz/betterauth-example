@@ -11,9 +11,12 @@ const Page = async () => {
     return <div>Not authenticated</div>
   }
 
+  const user = session.user
+  console.log(user)
+  
   return (
     <div className="flex h-svh items-center justify-center">
-      <SettingsDialog />
+      <SettingsDialog user={ user }/>
     </div>
   )
 }

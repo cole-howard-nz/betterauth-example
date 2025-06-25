@@ -1,14 +1,15 @@
-"use server";
+"use server"
 
-import { redirect } from "next/navigation";
-import { auth } from "./auth/auth";
-import { APIError } from "better-auth/api";
+import { redirect } from "next/navigation"
+import { auth } from "./auth/auth"
+import { APIError } from "better-auth/api"
+import { db } from "./prisma"
 
 interface State {
     message?: string | null 
 }
 
-export async function signUp(prevState: State, formData: FormData){
+export const signUp = async (prevState: State, formData: FormData) => {
     const data = {
       email: formData.get('email') as string,
       password: formData.get('password') as string
@@ -39,7 +40,7 @@ export async function signUp(prevState: State, formData: FormData){
     redirect('/dashboard')
 }
 
-export async function logIn(prevState: State, formData: FormData){
+export const logIn = async (prevState: State, formData: FormData) => {
   const data = {
     email: formData.get('email') as string,
     password: formData.get('password') as string
@@ -67,4 +68,12 @@ export async function logIn(prevState: State, formData: FormData){
     console.error("Login failed", error)
   }
   redirect('/dashboard')
+}
+
+export const findAccount = async (email: string) => {
+  const user = await db.user.findUnique({
+    where: { email }
+  })
+
+  return user
 }

@@ -7,6 +7,7 @@ import { Button } from '../ui/button'
 import { Label } from '../ui/label'
 import { Input } from '../ui/input'
 import { toast } from 'sonner'
+import SignInSocial from './sign-in-social'
 
 const SignUpForm = () => {
   const initialState = { message: '' }
@@ -34,15 +35,17 @@ const SignUpForm = () => {
                   <p>Welcome! Create an account to get started</p>
               </div>
 
-              <div className="mt-6">
-                  <Button
-                      type="button"
-                      variant="outline"
-                      className="w-full">
-                      <Icons.google />
-                      <span>Google</span>
-                  </Button>
-              </div>
+              <div className="flex justify-between items-center gap-3 mt-6">
+                <SignInSocial provider='google'>
+                    <Icons.google />
+                    <span>Google</span>
+                </SignInSocial>
+
+                <SignInSocial provider='microsoft'>
+                    <Icons.microsoft />
+                    <span>Microsoft</span>
+                </SignInSocial>
+            </div>
 
               <div className="my-6 grid grid-cols-[1fr_auto_1fr] items-center gap-3">
                   <hr className="border-dashed" />

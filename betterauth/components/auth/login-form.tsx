@@ -7,6 +7,7 @@ import { Label } from '../ui/label'
 import { Input } from '../ui/input'
 import { toast } from 'sonner'
 import { logIn } from '@/lib/actions'
+import SignInSocial from './sign-in-social'
 
 const LoginForm = () => {
   const initialState = { message: '' }
@@ -34,14 +35,16 @@ const LoginForm = () => {
             <p>Welcome back, log in to gain more access</p>
           </div>
 
-          <div className="mt-6">
-            <Button
-              type="button"
-              variant="outline"
-              className="w-full">
+          <div className="flex justify-between items-center gap-3 mt-6">
+            <SignInSocial provider='google'>
                 <Icons.google />
                 <span>Google</span>
-            </Button>
+            </SignInSocial>
+
+            <SignInSocial provider='microsoft'>
+                <Icons.microsoft />
+                <span>Microsoft</span>
+            </SignInSocial>
           </div>
 
           <div className="my-6 grid grid-cols-[1fr_auto_1fr] items-center gap-3">
@@ -100,7 +103,7 @@ const LoginForm = () => {
             asChild
             variant="link"
             className="text-sm">
-              <Link href="/login/forgot-account">Forgot your account?</Link>
+              <Link href="/login/account">Forgot your account?</Link>
           </Button>
         </div>
       </form>

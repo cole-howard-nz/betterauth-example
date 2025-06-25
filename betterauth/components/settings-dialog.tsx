@@ -41,18 +41,22 @@ import {
   SidebarProvider,
 } from "@/components/ui/sidebar"
 import LogoutButton from "./auth/logout-button"
+import { NavUser } from "./ui/nav-user"
 
 const data = {
   nav: [
     { name: "Home", icon: Home },
-    { name: "Update Text", icon: Paintbrush },
-    { name: "Projects and Services", icon: MessageCircle },
+    { name: "Change Content", icon: MessageCircle },
     { name: "Privacy and Visibility", icon: Lock },
-    { name: "Advanced Settings", icon: Settings },
+    { name: "Admin Settings", icon: Settings },
   ],
 }
 
-export function SettingsDialog() {
+export function SettingsDialog({ user }:{ user: {
+  name: string,
+  email: string,
+  image?: string | null | undefined
+}}) {
   const [open, setOpen] = React.useState(true)
 
   return (
@@ -68,23 +72,25 @@ export function SettingsDialog() {
               <SidebarGroup>
                 <SidebarGroupContent>
                   <SidebarMenu>
-                    <div className='flex flex-col justify-between'>
-                      {data.nav.map((item) => (
-                        <SidebarMenuItem key={item.name}>
-                          <SidebarMenuButton
-                            asChild
-                            isActive={item.name === "Home"}
-                          >
-                            <a href="#">
-                              <item.icon />
-                              <span>{item.name}</span>
-                            </a>
-                          </SidebarMenuButton>
-                        </SidebarMenuItem>
-                      ))}
+                    <div className="flex h-full flex-col">
+                      <div className="pb-2 border-b mb-4 space-y-2">
+                        <NavUser user={ user } />
+                      </div>
 
-                      <div className='mt-auto'>
-                        <LogoutButton />
+                      <div className="flex-1 space-y-1">
+                        {data.nav.map((item) => (
+                          <SidebarMenuItem key={item.name}>
+                            <SidebarMenuButton
+                              asChild
+                              isActive={item.name === "Home"}
+                            >
+                              <a href="#">
+                                <item.icon />
+                                <span>{item.name}</span>
+                              </a>
+                            </SidebarMenuButton>
+                          </SidebarMenuItem>
+                        ))}
                       </div>
                     </div>
                   </SidebarMenu>

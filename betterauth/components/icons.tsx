@@ -52,5 +52,14 @@ export const Icons = {
                 d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0C79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251">
             </path>
         </svg>
+    ),
+    microsoft: ({ ...props }: LucideProps) => (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23">
+            <path fill="#f3f3f3" d="M0 0h23v23H0z"/>
+            <path fill="#f35325" d="M1 1h10v10H1z"/>
+            <path fill="#81bc06" d="M12 1h10v10H12z"/>
+            <path fill="#05a6f0" d="M1 12h10v10H1z"/>
+            <path fill="#ffba08" d="M12 12h10v10H12z"/>
+        </svg>
     )
 }
